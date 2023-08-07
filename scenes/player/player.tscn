@@ -89,7 +89,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ytvk5"]
 resource_name = "follower_idle"
 length = 1.2
-loop_mode = 2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -106,7 +106,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_7tk3o"]
 resource_name = "follower_fall"
 length = 0.4
-loop_mode = 2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
