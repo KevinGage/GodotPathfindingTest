@@ -1,7 +1,7 @@
 Goals
 
 Create a map with different pathfinding tests
-	jump over gap
+	jump over gap --DONE
 	jump up ledge
 	jump up onto floating platform
 	fall off ledge without jumping
