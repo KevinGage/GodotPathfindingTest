@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 var anim: AnimationPlayer
 var is_collectable: bool
+var jump_detect_cast: RayCast2D
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -350.0
 
@@ -17,6 +18,7 @@ signal collected(this_follower: CharacterBody2D)
 func _ready():
 	anim = $AnimationPlayer
 	is_collectable = true
+	jump_detect_cast = $Flippables/Sprite2D/RayCast2D
 	
 	navigation_agent.path_desired_distance = 32.0
 	navigation_agent.target_desired_distance = 4.0
@@ -33,16 +35,18 @@ func _physics_process(delta):
 
 		if navigation_agent.is_navigation_finished() == false:
 			var next_path_position: Vector2 = navigation_agent.get_next_path_position()
-			var distance = (next_path_position - global_position).normalized()
+			var direction = (next_path_position - global_position).normalized()
 			
-			if distance.x < 0:
+			if direction.x < 0:
 				velocity.x = -1 * SPEED
-				$Sprite2D.flip_h = true
-				anim.play("player_run")
-			elif  distance.x > 0:
+				$Flippables.scale.x = -1
+				anim.play("follower_run")
+			elif direction.x > 0:
 				velocity.x = SPEED
-				$Sprite2D.flip_h = false
-				anim.play("player_run")
+				$Flippables.scale.x = 1
+				anim.play("follower_run")
+			if jump_detect_cast.is_colliding() == false and is_on_floor():
+				velocity.y = JUMP_VELOCITY
 		else:
 			velocity.x = 0
 			
@@ -52,12 +56,12 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	else:
 		if velocity.x == 0:
-			anim.play("player_idle")
+			anim.play("follower_idle")
 	
 	if velocity.y > 0:
-		anim.play("player_fall")
+		anim.play("follower_fall")
 	elif velocity.y < 0:
-		anim.play("player_jump")
+		anim.play("follower_jump")
 		
 	move_and_slide()
 
