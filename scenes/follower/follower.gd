@@ -8,9 +8,10 @@ var is_collectable: bool
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -350.0
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+signal collected(this_follower: CharacterBody2D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,11 +32,8 @@ func _physics_process(delta):
 		navigation_agent.target_position = movement_target.position
 
 		if navigation_agent.is_navigation_finished() == false:
-			var current_agent_position: Vector2 = global_position
 			var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 			var distance = (next_path_position - global_position).normalized()
-			
-			print(distance)
 			
 			if distance.x < 0:
 				velocity.x = -1 * SPEED
@@ -64,8 +62,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	if is_collectable:
-		print("collected")
-		movement_target = body
-		is_collectable = false
+		collected.emit(self)
