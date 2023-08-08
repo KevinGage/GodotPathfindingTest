@@ -37,6 +37,8 @@ func _physics_process(delta):
 			var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 			var direction = (next_path_position - global_position).normalized()
 			
+			var direction_angle = rad_to_deg(direction.angle())
+			
 			if direction.x < 0:
 				velocity.x = -1 * SPEED
 				$Flippables.scale.x = -1
@@ -45,8 +47,11 @@ func _physics_process(delta):
 				velocity.x = SPEED
 				$Flippables.scale.x = 1
 				anim.play("follower_run")
-			if jump_detect_cast.is_colliding() == false and is_on_floor():
-				velocity.y = JUMP_VELOCITY
+			if is_on_floor():
+				if jump_detect_cast.is_colliding() == false and direction.y <= 0:
+					velocity.y = JUMP_VELOCITY
+				if direction_angle < -60 and direction_angle > -120:
+					velocity.y = JUMP_VELOCITY
 		else:
 			velocity.x = 0
 			
