@@ -174,9 +174,9 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_dq17a")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lay2v"]
-vertices = PackedVector2Array(19, 479, 909, 479, 910, 593, 19, 591)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(19, 591, 910, 593, 909, 479, 19, 479)])
+vertices = PackedVector2Array(1852, 566, 1852, 591, 1236, 590, 1403, 565, 1234, 529, 1403, 543, 19, 591, 19, 479, 1219, 480, 913, 527, 912, 593, 1914, 247, 1500, 495, 1905, 385, 1761, 384, 1749, 383, 1469, 542, 1630, 451, 1597, 494, 1652, 449, 1698, 416, 1713, 415)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(9, 10, 6), PackedInt32Array(4, 9, 8), PackedInt32Array(5, 4, 8, 11, 12), PackedInt32Array(11, 13, 14, 15), PackedInt32Array(12, 16, 5), PackedInt32Array(17, 18, 12), PackedInt32Array(17, 12, 11), PackedInt32Array(19, 17, 11, 20), PackedInt32Array(20, 11, 15), PackedInt32Array(20, 15, 21)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(19, 591, 912, 593, 913, 527, 1234, 529, 1236, 590, 1852, 591, 1852, 566, 1403, 565, 1403, 543, 1469, 542, 1500, 495, 1597, 494, 1630, 451, 1652, 449, 1698, 416, 1713, 415, 1749, 383, 1761, 384, 1905, 385, 1914, 247, 1219, 480, 19, 479)])
 
 [node name="Platforms" type="Node2D"]
 
