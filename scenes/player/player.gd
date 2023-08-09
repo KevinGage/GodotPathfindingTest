@@ -48,33 +48,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func add_new_follower(follower):
-	print("collecting")
-	print(follower)
-	
+func follow(follower):
 	if followers.size() == 0:
 		follower.movement_target = self
 	else:
 		follower.movement_target = followers.back()
+
 	follower.is_collectable = false
 	followers.append(follower)
-
-
-func _on_follower_collected(this_follower):
-	add_new_follower(this_follower)
-
-
-func _on_follower_2_collected(this_follower):
-	add_new_follower(this_follower)
-
-
-func _on_follower_3_collected(this_follower):
-	add_new_follower(this_follower)
-
-
-func _on_follower_4_collected(this_follower):
-	add_new_follower(this_follower)
-
-
-func _on_follower_5_collected(this_follower):
-	add_new_follower(this_follower)

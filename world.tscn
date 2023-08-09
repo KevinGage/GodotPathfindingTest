@@ -25,9 +25,3 @@ position = Vector2(95, 519)
 
 [node name="Player" parent="." instance=ExtResource("2_qvqeh")]
 position = Vector2(251, 487)
-
-[connection signal="collected" from="Follower" to="Player" method="_on_follower_collected"]
-[connection signal="collected" from="Follower2" to="Player" method="_on_follower_2_collected"]
-[connection signal="collected" from="Follower3" to="Player" method="_on_follower_3_collected"]
-[connection signal="collected" from="Follower4" to="Player" method="_on_follower_4_collected"]
-[connection signal="collected" from="Follower5" to="Player" method="_on_follower_5_collected"]

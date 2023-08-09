@@ -12,8 +12,6 @@ const JUMP_VELOCITY: float = -350.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-signal collected(this_follower: CharacterBody2D)
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim = $AnimationPlayer
@@ -71,6 +69,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_area_2d_body_entered(_body):
+func _on_area_2d_body_entered(body):
 	if is_collectable:
-		collected.emit(self)
+		if "follow" in body:
+			body.follow(self)
