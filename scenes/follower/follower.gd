@@ -3,9 +3,10 @@ extends CharacterBody2D
 @export var movement_target: CharacterBody2D
 @export var navigation_agent: NavigationAgent2D
 
-var anim: AnimationPlayer
-var is_collectable: bool
-var jump_detect_cast: RayCast2D
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var is_collectable: bool = true
+@onready var jump_detect_cast: RayCast2D = $Flippables/Sprite2D/RayCast2D
+
 const SPEED: float = 150.0
 const JUMP_VELOCITY: float = -350.0
 
@@ -14,10 +15,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	anim = $AnimationPlayer
-	is_collectable = true
-	jump_detect_cast = $Flippables/Sprite2D/RayCast2D
-	
 	navigation_agent.path_desired_distance = 32.0
 	navigation_agent.target_desired_distance = 4.0
 	
@@ -26,6 +23,7 @@ func _ready():
 
 func actor_setup():
 	await get_tree().physics_frame
+
 
 func _physics_process(delta):
 	if movement_target != null:

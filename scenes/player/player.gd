@@ -7,13 +7,8 @@ const JUMP_VELOCITY = -350.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var anim: AnimationPlayer
-var followers: Array[CharacterBody2D]
-
-
-func _ready():
-	anim = $AnimationPlayer
-	followers = []
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var followers: Array[CharacterBody2D] = []
 
 
 func _physics_process(delta):
